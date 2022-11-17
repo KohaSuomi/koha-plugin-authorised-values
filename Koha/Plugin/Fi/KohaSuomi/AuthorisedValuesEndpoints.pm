@@ -53,4 +53,18 @@ sub uninstall() {
     my ( $self, $args ) = @_;
     return 1;
 }
+
+sub api_routes {
+    my ( $self, $args ) = @_;
+
+    my $spec_dir = $self->mbf_dir();
+    return JSON::Validator->new->schema($spec_dir . "/openapi.json")->schema->{data};
+}
+
+sub api_namespace {
+    my ( $self ) = @_;
+    
+    return 'kohasuomi';
+}
+
 1;

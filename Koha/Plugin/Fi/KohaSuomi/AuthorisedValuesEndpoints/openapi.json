@@ -1,0 +1,253 @@
+{
+	"/authorised_values/": {
+		"get": {
+			"x-mojo-to": "Fi::KohaSuomi::AuthorisedValuesEndpoints::AuthValueController#list",
+			"operationId": "listAuthorisedValues",
+			"tags": [
+				"authorisedvalueslist"
+			],
+			"produces": [
+				"application/json"
+			],
+			"responses": {
+				"200": {
+					"description": "list of authorised values and their parameters",
+					"schema": {
+						"type": "array"
+					}
+				},
+				"403": {
+					"description": "Access forbidden",
+					"schema": {
+						"type": "object",
+						"properties": {
+							"error": {
+								"description": "Error message",
+								"type": "string"
+							}
+						}
+					}
+				},
+				"500": {
+					"description": "Internal error",
+					"schema": {
+						"type": "object",
+						"properties": {
+							"error": {
+								"description": "Error message",
+								"type": "string"
+							}
+						}
+					}
+				},
+				"503": {
+					"description": "Under maintenance",
+					"schema": {
+						"type": "object",
+						"properties": {
+							"error": {
+								"description": "Error message",
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+    "/authorised_values/{authorised_value_id}": {
+		"get": {
+			"x-mojo-to": "Fi::KohaSuomi::AuthorisedValuesEndpoints::AuthValueController#get",
+			"operationId": "getById",
+			"tags": [
+				"authorisedvaluebyid"
+			],
+			"produces": [
+				"application/json"
+			],
+			"parameters": [
+				{
+					"name": "authorised_value_id",
+					"in": "path",
+					"required": true,
+					"description": "Authorised value internal identifier",
+					"type": "integer"					
+				}
+			],
+			"responses": {
+				"200": {
+					"description": "authorised value and its parameters",
+					"schema": {
+						"type": "object"
+					}
+				},
+				"403": {
+					"description": "Access forbidden",
+					"schema": {
+						"type": "object",
+						"properties": {
+							"error": {
+								"description": "Error message",
+								"type": "string"
+							}
+						}
+					}
+				},
+				"500": {
+					"description": "Internal error",
+					"schema": {
+						"type": "object",
+						"properties": {
+							"error": {
+								"description": "Error message",
+								"type": "string"
+							}
+						}
+					}
+				},
+				"503": {
+					"description": "Under maintenance",
+					"schema": {
+						"type": "object",
+						"properties": {
+							"error": {
+								"description": "Error message",
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+    "/authorised_values/authorised_value_categories/": {
+		"get": {
+			"x-mojo-to": "Fi::KohaSuomi::AuthorisedValuesEndpoints::AuthValueController#listByCategory",
+			"operationId": "getByName",
+			"tags": [
+				"authorisedvaluebyname"
+			],
+			"produces": [
+				"application/json"
+			],
+			"parameters": [
+				{
+					"name": "authorised_value_category",
+					"in": "query",
+					"required": true,
+					"description": "Authorised value internal category name",
+					"type": "string"					
+				}
+			],
+			"responses": {
+				"200": {
+					"description": "authorised values and their parameters",
+					"schema": {
+						"type": "array"
+					}
+				},
+				"403": {
+					"description": "Access forbidden",
+					"schema": {
+						"type": "object",
+						"properties": {
+							"error": {
+								"description": "Error message",
+								"type": "string"
+							}
+						}
+					}
+				},
+				"500": {
+					"description": "Internal error",
+					"schema": {
+						"type": "object",
+						"properties": {
+							"error": {
+								"description": "Error message",
+								"type": "string"
+							}
+						}
+					}
+				},
+				"503": {
+					"description": "Under maintenance",
+					"schema": {
+						"type": "object",
+						"properties": {
+							"error": {
+								"description": "Error message",
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+    "/authorised_values/sub_locations": {
+		"get": {
+			"x-mojo-to": "Fi::KohaSuomi::AuthorisedValuesEndpoints::AuthValueController#getSubLocations",
+			"operationId": "getSubLocationAuthValues",
+			"tags": [
+				"sublocations"
+			],
+			"produces": [
+				"application/json"
+			],
+			"parameters": [
+				{
+					"name": "authorised_value_id",
+					"in": "query",
+					"required": false,
+					"description": "Authorised value internal identifier",
+					"type": "integer"					
+				}
+			],
+			"responses": {
+				"200": {
+					"description": "list of authorised values and their descriptions",
+					"schema": {
+						"type": "array"
+					}
+				},
+				"403": {
+					"description": "Access forbidden",
+					"schema": {
+						"type": "object",
+						"properties": {
+							"error": {
+								"description": "Error message",
+								"type": "string"
+							}
+						}
+					}
+				},
+				"500": {
+					"description": "Internal error",
+					"schema": {
+						"type": "object",
+						"properties": {
+							"error": {
+								"description": "Error message",
+								"type": "string"
+							}
+						}
+					}
+				},
+				"503": {
+					"description": "Under maintenance",
+					"schema": {
+						"type": "object",
+						"properties": {
+							"error": {
+								"description": "Error message",
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
