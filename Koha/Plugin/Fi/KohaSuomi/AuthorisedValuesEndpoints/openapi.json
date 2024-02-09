@@ -2,7 +2,7 @@
 	"/authorised_values/": {
 		"get": {
 			"x-mojo-to": "Fi::KohaSuomi::AuthorisedValuesEndpoints::AuthValueController#list",
-			"operationId": "listAuthorisedValues",
+			"operationId": "avListAuthorisedValuesKs",
 			"tags": [
 				"authorisedvalueslist"
 			],
@@ -58,7 +58,7 @@
     "/authorised_values/{authorised_value_id}": {
 		"get": {
 			"x-mojo-to": "Fi::KohaSuomi::AuthorisedValuesEndpoints::AuthValueController#get",
-			"operationId": "getById",
+			"operationId": "avGetById",
 			"tags": [
 				"authorisedvaluebyid"
 			],
@@ -123,7 +123,7 @@
     "/authorised_values/authorised_value_categories/": {
 		"get": {
 			"x-mojo-to": "Fi::KohaSuomi::AuthorisedValuesEndpoints::AuthValueController#listByCategory",
-			"operationId": "getByName",
+			"operationId": "avGetByName",
 			"tags": [
 				"authorisedvaluebyname"
 			],
