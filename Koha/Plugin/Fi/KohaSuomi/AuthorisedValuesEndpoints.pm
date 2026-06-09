@@ -6,6 +6,7 @@ use base qw(Koha::Plugins::Base);
 ## We will also need to include any Koha libraries we want to access
 use C4::Context;
 use utf8;
+use C4::Languages;
 ## Here we set our plugin version
 our $VERSION = "1.0.0";
 ## Here is our metadata, some keys are required, some are optional
@@ -19,6 +20,25 @@ our $metadata = {
     version         => $VERSION,
     description     => 'Adds enpoints for fetching/modifying Koha authorised values data. (Paikalliskannat, Täti)',
 };
+
+sub get_localized_metadata {
+    my ($self) = @_;
+    my $lang = C4::Languages::getlanguage() || 'en';
+    my ($name, $description);
+
+    if ($lang eq 'sv-SE') {
+        $name = "Slutpunkter för auktoriserade värden";
+        $description = "Lägger till slutpunkter för att hämta och modifiera Koha auktoriserade värden. (Lokala databaser, Täti)";
+    
+    } elsif ($lang eq 'fi-FI' ) {
+        $name = "Valtuutetut arvot päätepisteet";
+        $description = "Lisää päätepisteitä Kohan valtuutettujen arvojen hakuun ja muokkaamiseen. (Paikalliskannat, Täti)";
+    } else {
+        $name = "Authorised values endpoints";
+        $description = "Adds endpoints for fetching/modifying Koha authorised values data. (Local databases, Täti)";
+    }
+    return ($name, $description);
+}
 ## This is the minimum code required for a plugin's 'new' method
 ## More can be added, but none should be removed
 sub new {
@@ -30,6 +50,9 @@ sub new {
     ## This runs some additional magic and checking
     ## and returns our actual 
     my $self = $class->SUPER::new($args);
+    my ($name, $description) = $self->get_localized_metadata();
+    $self->{'metadata'}->{'name'} = $name;
+    $self->{'metadata'}->{'description'} = $description;
     return $self;
 }
 ## This is the 'install' method. Any database tables or other setup that should
