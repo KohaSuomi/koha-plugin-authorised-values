@@ -18,7 +18,7 @@ our $metadata = {
     minimum_version => '21.05',
     maximum_version => '',
     version         => $VERSION,
-    description     => 'Adds enpoints for fetching/modifying Koha authorised values data. (Paikalliskannat, Täti)',
+    description     => 'Adds endpoints for fetching/modifying Koha authorised values data. (Local databases, Täti)',
 };
 
 sub get_localized_metadata {
@@ -27,12 +27,12 @@ sub get_localized_metadata {
     my ($name, $description);
 
     if ($lang eq 'sv-SE') {
-        $name = "Slutpunkter för auktoriserade värden";
-        $description = "Lägger till slutpunkter för att hämta och modifiera Koha auktoriserade värden. (Lokala databaser, Täti)";
+        $name = "Endpoints för auktoriserade värden";
+        $description = "Lägger till endpoints för att hämta och modifiera auktoriserade värden i Koha. (Lokala databaser, Täti)";
     
     } elsif ($lang eq 'fi-FI' ) {
-        $name = "Valtuutetut arvot päätepisteet";
-        $description = "Lisää päätepisteitä Kohan valtuutettujen arvojen hakuun ja muokkaamiseen. (Paikalliskannat, Täti)";
+        $name = "Auktorisoitujen arvojen endpointit";
+        $description = "Lisää endpointit Kohan auktorisoitujen arvojen hakuun ja muokkaamiseen. (Paikalliskannat, Täti)";
     } else {
         $name = "Authorised values endpoints";
         $description = "Adds endpoints for fetching/modifying Koha authorised values data. (Local databases, Täti)";
